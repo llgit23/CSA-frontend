@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <script>
+        var funcs = []
+    // 需要修改的函数
+    for (var i = 0; i < 10; i++) {
+    funcs.push(function() { console.log(i) })
+    }
+    //示例 使用es5的闭包的概念
+    for (var i = 0; i < 10; i++) {
+    funcs.push((function(value) {
+    return function() {
+    console.log(value)
+    }
+    }(i)))
+    }
+    funcs.forEach(function(func) {
+    func()
+    })
+
+    //输出学生信息
+    class person {
+        constructor(name,age)
+        {
+            this.name = name;
+            this.age = age;
+        }
+        speak(){
+            console.log(this.name)
+            console.log(this.age)
+        }
+    }
+    var p = new person('zhangsan', 21);
+    console.log(p)
+    class teacher extends person {
+        constructor(name,age,lesson)
+        {
+            super(name,age);
+            this.lesson = lesson;
+        }
+        speak()
+        {
+            console.log(123);
+        }
+    }
+    const c = new teacher('lisi',30,'chinese');
+    console.log(c);
+    </script>
+</body>
+</html>
